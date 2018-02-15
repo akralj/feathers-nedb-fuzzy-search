@@ -46,11 +46,7 @@ module.exports = function (options = {}) {
  * @return {function}
  */
 function fuzzySearch(str, { fields, deep, wordBeginning }) {
-  if (wordBeginning) {
-    let r = new RegExp('^' + escape(str), 'i')
-  } else {
-    let r = new RegExp(escape(str), 'i') 
-  }
+  let r = wordBeginning ? new RegExp('^' + escape(str), 'i') : new RegExp(escape(str), 'i') 
 
   if (Array.isArray(fields)) {
     return function () {
